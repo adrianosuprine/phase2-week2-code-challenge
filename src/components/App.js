@@ -16,8 +16,17 @@ function App() {
   
   // add bot to your bot army
   function enlistBot(bot){
-    setYourBotArmy((prevArmy) => [...prevArmy, bot])
+     // Check if the bot is not already enlisted
+     if (!yourBotArmy.find((enlistedBot) => enlistedBot.id === bot.id)) {
+      // Enlist the bot
+      setYourBotArmy((prevArmy) => [...prevArmy, bot])
+    } else {
+      // Display a message or handle the case where the bot is already enlisted
+      alert(`Bot ${bot.name} is already enlisted.`);
+    }
+  
   }
+ 
   // delete bot from created army
   function releaseBot(botId){
     setYourBotArmy((prevArmy) => prevArmy.filter((bot) => bot.id !== botId));

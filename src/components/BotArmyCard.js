@@ -1,9 +1,5 @@
 function BotArmyCard({bot, releaseBot, dischargeBot}){
-    // function displayAvatar(){
-    //     return (
-    //     <img className="bot-avatar" src={bot.avatar_url} alt={bot.name}></img> 
-    //     )
-    // }
+   
     return (
         <div className="bot-card">
            <img className="bot-avatar" src={bot.avatar_url} alt={bot.name}></img> 
