@@ -8,7 +8,7 @@ function BotArmyCard({bot, releaseBot, dischargeBot}){
             <p>Damage: {bot.damage}</p>
             <p>Armor: {bot.armor}</p>
             <button onClick={() => releaseBot(bot.id)}>Release</button>
-            <button onClick={() =>dischargeBot(bot.id)}>Discharge</button>
+            <button className="dischargebot-btn"onClick={() =>dischargeBot(bot.id)}>✖ </button>
             
     </div>
     )
