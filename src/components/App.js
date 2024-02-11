@@ -14,15 +14,25 @@ function App() {
       .then((data) => setBots(data));
   }, []);
   
-  // add bot to your boot army
+  // add bot to your bot army
   function enlistBot(bot){
     setYourBotArmy((prevArmy) => [...prevArmy, bot])
   }
+  // delete bot from created army
   function releaseBot(botId){
     setYourBotArmy((prevArmy) => prevArmy.filter((bot) => bot.id !== botId));
   }
 
- 
+  const dischargeBot = (botId) => {
+    // Delete bot from backend
+    fetch(`http://localhost:8001/bots/${botId}`, {
+      method: 'DELETE',
+    });
+
+    // Delete bot from frontend
+    setYourBotArmy((prevArmy) => prevArmy.filter((bot) => bot.id !== botId));
+  };
+
 
   return (
     <div className='App'>
@@ -31,7 +41,7 @@ function App() {
       <br/>where you can custom build your own Bot Army!</p>
     <div className='bot-container'>
       <BotCollection bots={bots} enlistBot={enlistBot}/> 
-       <YourBotArmy botarmy={yourBotArmy} releaseBot={releaseBot}/> 
+       <YourBotArmy botarmy={yourBotArmy} releaseBot={releaseBot} dischargeBot={dischargeBot}/> 
     </div>
    
    </div>
